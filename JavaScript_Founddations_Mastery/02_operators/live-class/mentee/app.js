@@ -195,6 +195,15 @@ console.log(studentScore < 100);
 // Now reassign enteredPassword to "open123".
 // Log the comparison again. What changed?
 
+const expectedPassword = "open123";
+let enteredPassword = "Open123";
+
+console.log(expectedPassword === enteredPassword);
+// False, enteredPassword begins with a capital O so they are not a strict match
+
+enteredPassword = "open123";
+console.log(expectedPassword === enteredPassword);
+
 // ----------------------------------------------------------
 // PART 4 — CONNECT THE DOTS
 // ----------------------------------------------------------
@@ -208,13 +217,31 @@ console.log(studentScore < 100);
 // Declare a const called goal    with the value 1000.
 // Declare a const called weekly  with the value 125.
 //
+let savings = 0;
+const goal = 1000;
+const weekly = 125;
+
 // Simulate 4 weeks of saving using += four times.
 // After each +=, log: "Week [n]: $" + savings
+
+savings += weekly;
+console.log("Week 1: $" + savings); // 125
+
+savings += weekly;
+console.log("Week 2: $" + savings); // 250
+
+savings += weekly;
+console.log("Week 3: $" + savings); // 375
+
+savings += weekly;
+console.log("Week 4: $" + savings); // 500
+
 //
 // Then log whether the goal has been reached:
 // savings >= goal
 // (just log the true/false result — no if/else yet)
 
+console.log(savings >= goal);
 // TASK 10
 // Declare these variables about a product:
 //   const productName  = "Laptop"
@@ -222,11 +249,24 @@ console.log(studentScore < 100);
 //   const minStock     = 5
 //   const reorderQty   = 50
 //
+
+const productName = "Laptop";
+let stockCount = 30;
+const minStock = 5;
+const reorderQty = 50;
+
 // Simulate selling 27 units: stockCount -= 27
 // Log: "Stock remaining: " + stockCount
 //
+stockCount -= 27;
+console.log("Stock remaining: " + stockCount);
+
 // Log the result of: stockCount <= minStock
 // (This would trigger a reorder in a real app — true means reorder needed)
 //
+console.log(stockCount <= minStock);
+
 // Now add the reorder quantity: stockCount += reorderQty
 // Log: "Stock after reorder: " + stockCount
+stockCount += reorderQty;
+console.log("Stock after reorder: " + stockCount);

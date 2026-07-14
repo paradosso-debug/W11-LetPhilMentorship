@@ -5,7 +5,6 @@
 // what was wrong as a comment.
 // ============================================================
 
-
 // ----------------------------------------------------------
 // 🟢 DEBUG 1 — Easy
 // ----------------------------------------------------------
@@ -14,13 +13,12 @@
 
 const price = 50;
 const qty = 3;
-const total = price + qty;
+const total = price * qty;
 console.log("Total: $" + total);
 
 // What's wrong ↓
 
 // Your fix ↓
-
 
 // ----------------------------------------------------------
 // 🟡 DEBUG 2 — Medium
@@ -31,12 +29,11 @@ console.log("Total: $" + total);
 
 const minAge = 18;
 let userAge = 16;
-console.log("Meets requirement: " + (userAge = minAge));
+console.log("Meets requirement: " + (userAge === minAge));
 
 // What's wrong ↓
 
 // Your fix ↓
-
 
 // ----------------------------------------------------------
 // 🔴 DEBUG 3 — Hard
@@ -45,12 +42,12 @@ console.log("Meets requirement: " + (userAge = minAge));
 // One causes a wrong value. One causes an error.
 // Find both, explain each, and fix them.
 
-const startScore = 100;
+let startScore = 100;
 startScore += 50;
 console.log("After bonus: " + startScore);
 
 let multiplier = 2;
-let boostedScore = startScore * Multiplier;
+let boostedScore = startScore * multiplier;
 console.log("Boosted: " + boostedScore);
 
 // Bug 1 ↓
