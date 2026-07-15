@@ -21,19 +21,17 @@
 
 console.log("=== DATA TYPES — LIVE CLASS ===\n");
 
-
 // ============================================================
 // THE DATA — a user profile with intentionally mixed types
 // ============================================================
-const firstName  = "alex";
-const lastName   = "RIVERA";
-const email      = "  Alex.Rivera@Email.COM  ";
-const age        = "28";          // stored as string (as it comes from a form)
-const bio        = "  Passionate developer. Loves clean code.  ";
-const isPremium  = true;
-const score      = null;          // intentionally set to nothing
-const lastLogin  = undefined;     // never assigned
-
+const firstName = "alex";
+const lastName = "RIVERA";
+const email = "  Alex.Rivera@Email.COM  ";
+const age = "28"; // stored as string (as it comes from a form)
+const bio = "  Passionate developer. Loves clean code.  ";
+const isPremium = true;
+const score = null; // intentionally set to nothing
+const lastLogin = undefined; // never assigned
 
 // ============================================================
 // PART 1 — THE PRIMITIVE TYPES
@@ -61,8 +59,15 @@ const lastLogin  = undefined;     // never assigned
 //   Q3: What does typeof undefined return?
 
 console.log("--- Task 1: typeof ---");
-// your code here
 
+console.log("firstName: " + typeof firstName);
+console.log("lastName: " + typeof lastName);
+console.log("email: " + typeof email);
+console.log("age: " + typeof age);
+console.log("bio: " + typeof bio);
+console.log("isPremium: " + typeof isPremium);
+console.log("score: " + typeof score);
+console.log("lastLogin " + typeof lastLogin);
 
 // ============================================================
 // PART 2 — TEMPLATE LITERALS
@@ -86,28 +91,42 @@ console.log("--- Task 1: typeof ---");
 //
 // a) BEFORE: "First name: " + firstName
 //    AFTER:  log using a template literal
+console.log("\n--- Task 2: Template Literals ---");
+console.log(`First name: ${firstName}`);
+
 //
 // b) BEFORE: "Full name: " + firstName + " " + lastName
 //    AFTER:  log using a template literal
 //
+
+console.log(`Full name: ${firstName} ${lastName}`);
+
 // c) BEFORE: "Age: " + age + " years old"
 //    AFTER:  log using a template literal
+
+console.log(`Age: ${age} years old`);
 //
 // d) BEFORE: "Premium: " + isPremium
 //    AFTER:  log using a template literal
+
+console.log(`Premium: ${isPremium}`);
 //
 // e) Write a multiline template literal that spans THREE lines:
 //    Line 1: "=== Profile ==="
 //    Line 2: "Name: " + firstName + " " + lastName
 //    Line 3: "Email: " + email
 //    Store it in const profileCard and log it.
+
+const profileCard = `=== Profile ===
+Name: ${firstName} ${lastName}
+Email: ${email}`;
+
+console.log(profileCard);
 //
 // Write a comment: what are two advantages of template literals
 // over string concatenation?
 
-console.log("\n--- Task 2: Template Literals ---");
 // your code here
-
 
 // TASK 3 — Expressions inside ${}
 // Inside ${} you can put ANY expression, not just a variable.
@@ -132,8 +151,12 @@ console.log("\n--- Task 2: Template Literals ---");
 //    Notice: typeof isPremium is itself an expression inside ${}
 
 console.log("\n--- Task 3: Expressions in Template Literals ---");
-// your code here
-
+console.log(`Email length: ${email.length}`);
+console.log(`age === "28": ${age === "28"}`);
+const price = 49.99;
+const qty = 3;
+console.log(`Total: $${price * qty}`);
+console.log(`isPremium is ${isPremium} - type: ${typeof isPremium}`);
 
 // ============================================================
 // PART 3 — STRING METHODS
@@ -175,8 +198,13 @@ console.log("\n--- Task 3: Expressions in Template Literals ---");
 //    Log: `Starts with "alex": ${cleanEmail.startsWith("alex")}`
 
 console.log("\n--- Task 4: String Methods on Email ---");
-// your code here
-
+const trimmedEmail = email.trim();
+console.log(`Timeed Email: ${trimmedEmail}`);
+const cleanEmail = trimmedEmail.toLowerCase();
+console.log(`Clean: ${cleanEmail}`);
+console.log(`Contains @: ${cleanEmail.includes("@")}`);
+console.log(`Email length: ${cleanEmail.length}`);
+console.log(`Starts with "alex: ${cleanEmail.startsWith("alex")}`);
 
 // TASK 5 — Fix the name casing
 // firstName is "alex" (all lowercase) and lastName is "RIVERA" (all caps).
@@ -204,8 +232,17 @@ console.log("\n--- Task 4: String Methods on Email ---");
 //    Log: `Initials: ${initials}`
 
 console.log("\n--- Task 5: Fixing Name Casing ---");
-// your code here
+const fixedFirst =
+  firstName[0].toLocaleUpperCase() + firstName.slice(1).toLowerCase();
+console.log(`Fixed first: ${fixedFirst}`);
+const fixedLast = lastName[0].toUpperCase() + lastName.slice(1).toLowerCase();
+console.log(`Fixed last: ${fixedLast}`);
 
+const fullName = `${fixedFirst} ${fixedLast}`;
+console.log(`Full name: ${fullName}`);
+
+const initials = `${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}`;
+console.log(`Initials: ${initials}`);
 
 // ============================================================
 // PART 4 — TYPE COERCION AND CONVERSION
@@ -239,8 +276,11 @@ console.log("\n--- Task 5: Fixing Name Casing ---");
 // e) false + "!"
 
 console.log("\n--- Task 6: Coercion Surprises ---");
-// your code here
-
+console.log("10" + 5, typeof ("10" + 5)); // "105" string
+console.log("10" - 5, typeof ("10" - 5));
+console.log("10" * 2, typeof ("10" * 2));
+console.log(true + 1, typeof (true + 1));
+console.log(false + "!", typeof (false + "!"));
 
 // TASK 7 — Explicit conversion
 // age is the string "28" — as it would arrive from an HTML form input.
@@ -271,7 +311,6 @@ console.log("\n--- Task 6: Coercion Surprises ---");
 
 console.log("\n--- Task 7: Explicit Conversion ---");
 // your code here
-
 
 // ============================================================
 // PART 5 — NULL, UNDEFINED, AND FALSY VALUES
@@ -308,7 +347,6 @@ console.log("\n--- Task 7: Explicit Conversion ---");
 console.log("\n--- Task 8: null and undefined ---");
 // your code here
 
-
 // TASK 9 — The six falsy values
 // Log Boolean() for each of the six falsy values to confirm they're all false.
 // Use a separate console.log for each one.
@@ -328,7 +366,6 @@ console.log("\n--- Task 8: null and undefined ---");
 
 console.log("\n--- Task 9: Falsy Values ---");
 // your code here
-
 
 // ============================================================
 // PART 6 — == vs ===
@@ -360,7 +397,6 @@ console.log("\n--- Task 9: Falsy Values ---");
 
 console.log("\n--- Task 10: == vs === ---");
 // your code here
-
 
 // ============================================================
 // CONNECT THE DOTS — Lessons 1, 2, and 3
