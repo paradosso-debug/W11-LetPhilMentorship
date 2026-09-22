@@ -291,14 +291,47 @@ function fetchRepos(username) {
     });
 }
 
-fetchRepos("paradosso-debug");
-
 // const err = {
 //   message: "couldnt load repos"
 // }
 
 function checkProfile() {
-  // your code here
+  const username = document.getElementById("username-input").value.trim();
+  const githubStatus = document.getElementById("github-status");
+  if (username === "") {
+    return;
+  }
+  githubStatus.textContent = "Checking profile...";
+  githubStatus.className = "status loading";
+  document.getElementById("profile-card").innerHTML = "";
+  document.getElementById("portfolio-report").innerHTML = "";
+  document.getElementById("repo-list").innerHTML = "";
+
+  fetch(`https://api.github.com/users/${username}`)
+    .then((response) => {
+      if (response.status === 404) {
+        throw new Error(`No GitHub user called "${username}"`);
+      }
+      if (response.status === 403) {
+        throw new Error("Rate limit hit (60/hour per IP) — wait a bit");
+      }
+      if (!response.ok) {
+        throw new Error(`Request failed: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((user) => {
+      githubStatus.textContent = `✓ Found ${user.login}`;
+      githubStatus.className = "status success";
+      document
+        .getElementById("profile-card")
+        .appendChild(createProfileCard(user));
+      fetchRepos(username);
+    })
+    .catch((err) => {
+      githubStatus.textContent = `❌ ${error.message}`;
+      githubStatus.className = "status error";
+    });
 }
 
 // TASK 5 — wire up the form
@@ -306,8 +339,13 @@ function checkProfile() {
 // Wire it to #github-form's submit event.
 
 function handleGithubSubmit(event) {
-  // your code here
+  event.preventDefault();
+  checkProfile();
 }
+
+document
+  .getElementById("github-form")
+  .addEventListener("submit", handleGithubSubmit);
 
 // wire up the form listener here
 
